@@ -1,0 +1,19 @@
+version: v1
+managed:
+  enabled: true
+  # optimize_for: CODE_SIZE
+  # Go
+  go_package_prefix:
+    default: grpc-client/internal/tensorflow/tensorflow
+  override:
+    GO_PACKAGE:
+      # move the generated xla_data.pb.go file into package xla/data to break the import cycle.
+      tensorflow/compiler/xla/xla_data.proto: 'grpc-client/internal/tensorflow/compiler/xla/data'
+
+plugins:
+  - name: go-grpc
+    out: gen
+    opt:
+      - require_unimplemented_servers=false
+    
+  
