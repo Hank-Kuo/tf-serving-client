@@ -7,3 +7,6 @@ rm -r tensorflow && rm -r serving
 mv ./tensorflow_copy ./tensorflow
 cp -r serving/tensorflow_serving ./tensorflow_serving
 
+buf gen
+
+

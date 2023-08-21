@@ -1,4 +1,4 @@
-module grpc-client
+module tf-serving-client
 
 go 1.21.0
 

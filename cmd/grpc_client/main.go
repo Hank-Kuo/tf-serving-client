@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	tf_framework "grpc-client/internal/tensorflow/tensorflow/tensorflow/core/framework"
-	tfs_api_pb "grpc-client/internal/tensorflow/tensorflow/tensorflow_serving/apis"
+	tf_framework "tf-serving-client/internal/tensorflow/tensorflow/tensorflow/core/framework"
+	tfs_api_pb "tf-serving-client/internal/tensorflow/tensorflow/tensorflow_serving/apis"
 
 	"google.golang.org/grpc"
 )
@@ -26,11 +26,7 @@ func main() {
 	defer conn.Close()
 
 	c := tfs_api_pb.NewPredictionServiceClient(conn)
-	// channel.unary_unary(
-	// '/tensorflow.serving.PredictionService/Predict',
-	// request_serializer=tensorflow__serving_dot_apis_dot_predict__pb2.PredictRequest.SerializeToString,
-	// response_deserializer=tensorflow__serving_dot_apis_dot_predict__pb2.PredictResponse.FromString,
-	// )
+
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
